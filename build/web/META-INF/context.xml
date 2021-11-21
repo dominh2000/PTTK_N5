@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/BTL_PTTK">
+    <Resource name="jdbc/assignment2" auth="Container" 
+              maxActive="100" maxIdle="30" maxWait="10000" 
+              username="root" password="root" 
+              driverClassName="com.mysql.cj.jdbc.Driver" 
+              url="jdbc:mysql://localhost:3306/assignment2?autoReconnect=true" 
+              logAbandoned="true" removeAbandoned="true" 
+              removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+</Context>
+
