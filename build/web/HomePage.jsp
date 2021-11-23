@@ -8,12 +8,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.util.*" import="java.io.*"%>
-<%--<%@ page import="model.Book" %>--%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Shopee.vn</title>
+        <title>Trang chủ</title>
         <style>
             <%@include file="/css/homeStyle.css"%>
         </style>
@@ -48,9 +47,9 @@
 
             <!-- for logo page -->
             <div class="logo">
-                <a href="HomePage.jsp">
+                <a href="<%=request.getContextPath()%>/Home">
                 <h1>
-                        <span style="color:white">Shopee</span>
+                        <span style="color:white">BTL-N5</span>
                
                 </h1>
                 </a>
@@ -115,11 +114,11 @@
 
 
                             <div class="dropdown">
-                                <a href="#"><span class="span-1">Sách</span></a>
+                                <a href="<%=request.getContextPath()%>/BookPage"><span class="span-1">Sách</span></a>
                                 <div class="dropdown-content">
-                                    <a href="#"><span class="span-2">Thiếu nhi</a>
+                                    <a href="#"><span class="span-2">Văn học</a>
                                     <a href="#"><span class="span-2">Giáo dục</a>
-                                    <a href="#"><span class="span-2">Khoa học</a>
+                                    <a href="#"><span class="span-2">Khoa học - Công nghệ</a>
                                     <a href="#"><span class="span-2">Kinh tế</a>
                                 </div>
                             </div>
@@ -171,7 +170,7 @@
             </div>
             <div class="menu-bar">
                 <div class="text-bar">
-                    <a href="HomePage.jsp">
+                    <a href="<%=request.getContextPath()%>/Home">
 
                         <span>Trang chủ</span>
                     </a>
@@ -190,20 +189,24 @@
             <div class="display-book">
                 <table style="width:100%; border:1px solid">		
                     <tr>
+                        <th>Ảnh</th>
                         <th>Tên sản phẩm</th>
-                        <th>Giá </th>
+                        <th>Mô tả</th>
+                        <th>Giá</th>
                         <th>Thao tác</th>
                     </tr>
-                    <c:forEach items="${listBook}" var="item" varStatus="status">
+                    <c:forEach items="${listItemBook}" var="itemBook" varStatus="status">
                         <tr>
-                            <td align="center">${item.name}</td>
-                            <td align="center">${item.price}</td>
+                            <td align="center"><img src="${itemBook.image}" alt="${itemBook.book.title}" style="width:175px;height:250px;"></td>
+                            <td align="center">${itemBook.book.title}</td>
+                            <td align="center">${itemBook.description}</td>
+                            <td align="center">${itemBook.price} VNĐ</td>
                             <td align="center"><form action="AddToCart" method="post">
-                                    <input type="hidden" name="itemID" value="${item.id }"/>
+                                    <input type="hidden" name="itemID" value="${itemBook.barcode}"/>
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="accountID" value="<%=accountID%>" />
                                     <input type="hidden" name="cartID" value="<%=cartID%>" />
-                                    <button type="submit" style="color:black; background-color:orange;border:1px solid orange"}>Select</button>
+                                    <button type="submit" style="color:black; background-color:orange;border:1px solid orange">Thêm vào giỏ hàng</button>
                                 </form></td>
                         </tr>
                     </c:forEach>

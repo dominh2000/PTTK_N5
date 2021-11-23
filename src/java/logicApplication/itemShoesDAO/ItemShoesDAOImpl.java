@@ -149,6 +149,58 @@ public class ItemShoesDAOImpl implements ItemShoesDAO {
             }
         }
     }
+    
+    @Override
+    public List<ItemShoes> getAllItemShoes() {
+        List<ItemShoes> listItemShoes = new ArrayList<>();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+
+        String query = "SELECT * FROM itemshoes WHERE ShoesID = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String barcode = rs.getString("Barcode");
+                int feedbackId = rs.getInt("FeedbackID");
+                int cartId = rs.getInt("CartID");
+                int shoesId = rs.getInt("ShoesID");
+                float price = rs.getFloat("Price");
+                String discount = rs.getString("Discount");
+                String promoText = rs.getString("PromoText");
+                String description = rs.getString("Description");
+                String image = rs.getString("Image");
+
+                Object shoe = getShoes(shoesId);
+                if (shoe instanceof Sneaker) {
+                    Sneaker sneaker = (Sneaker) shoe;
+                    listItemShoes.add(new ItemShoes(barcode, price, discount, promoText, description, image, sneaker));
+                } else if (shoe instanceof BusinessShoes) {
+                    BusinessShoes businessShoes = (BusinessShoes) shoe;
+                    listItemShoes.add(new ItemShoes(barcode, price, discount, promoText, description, image, businessShoes));
+                } else if (shoe instanceof RunningShoes) {
+                    RunningShoes runningShoes = (RunningShoes) shoe;
+                    listItemShoes.add(new ItemShoes(barcode, price, discount, promoText, description, image, runningShoes));
+                } else if (shoe instanceof Boot) {
+                    Boot boot = (Boot) shoe;
+                    listItemShoes.add(new ItemShoes(barcode, price, discount, promoText, description, image, boot));
+                }
+            }
+
+            return listItemShoes;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 
     @Override
     public Object getShoes(int ID) {
@@ -176,6 +228,5 @@ public class ItemShoesDAOImpl implements ItemShoesDAO {
     public ItemShoes modifyItemShoes(ItemShoes itemShoes) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }

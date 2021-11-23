@@ -38,9 +38,9 @@ public class OrderDaoImpl implements OrderDAO{
         try {
             ps = connection.prepareStatement(query_1);
             ps.setInt(1, payment.getId());
-            ps.setInt(2, payment.getCartID());
-            ps.setInt(3, payment.getShipmentID());
-            ps.setInt(4, payment.getOrderID());
+            // ps.setInt(2, payment.getCartID());
+            // ps.setInt(3, payment.getShipmentID());
+            // ps.setInt(4, payment.getOrderID());
             ps.setString(5, payment.getMethod());
             ps.execute();
             
@@ -54,7 +54,7 @@ public class OrderDaoImpl implements OrderDAO{
             
             ps = connection.prepareStatement(query_3);
             ps.setInt(1, cart.getId());
-            ps.setInt(2, cart.getOrderId());
+            // ps.setInt(2, cart.getOrderId());
             ps.setInt(3, cart.getAmount());
             ps.setFloat(4, cart.getPrice());     
             ps.execute();

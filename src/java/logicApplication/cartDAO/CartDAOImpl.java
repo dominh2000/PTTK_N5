@@ -36,6 +36,7 @@ import model.itemElectronics.ItemElectronics;
 import model.itemShoes.ItemShoes;
 import model.order.Cash;
 import model.order.Credit;
+import model.order.Order;
 import model.order.Payment;
 import model.shoes.Boot;
 import model.shoes.BusinessShoes;
@@ -47,6 +48,43 @@ import model.shoes.Sneaker;
  * @author pc
  */
 public class CartDAOImpl implements CartDAO {
+    
+    @Override
+    public Cart createCart(Order order) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        String query1 = "INSERT INTO cart (OrderID, Amount, TotalPrice) VALUES (?,?,?)";
+        String query2 = "SELECT * FROM cart WHERE OrderID = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement(query1);
+            ps.setInt(1, order.getId());
+            ps.setInt(2, 0);
+            ps.setFloat(3, 0);
+            ps.executeUpdate();
+            
+            Cart cart = null;
+            ps = connection.prepareStatement(query2);
+            ps.setInt(1, order.getId());
+            rs = ps.executeQuery();
+            if(rs.next()){
+                int cartID = rs.getInt("ID");
+                int amount = rs.getInt("Amount");
+                float price = rs.getFloat("TotalPrice");
+                
+                cart = new Cart(cartID, amount, price);
+            }
+            return cart;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 
     @Override
     public Cart getCartById(int id) {

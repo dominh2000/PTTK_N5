@@ -149,7 +149,59 @@ public class ItemElectronicsDAOImpl implements ItemElectronicsDAO{
             }
         }
     }
+    
+    @Override
+    public List<ItemElectronics> getAllItemElectronics() {
+        List<ItemElectronics> listItemElectronics = new ArrayList<>();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
 
+        String query = "SELECT * FROM itemelectronics";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String barcode = rs.getString("Barcode");
+                int feedbackId = rs.getInt("FeedbackID");
+                int cartId = rs.getInt("CartID");
+                int elecId = rs.getInt("ElectronicsID");
+                float price = rs.getFloat("Price");
+                String discount = rs.getString("Discount");
+                String promoText = rs.getString("PromoText");
+                String description = rs.getString("Description");
+                String image = rs.getString("Image");
+
+                Object elec = getElectronics(elecId);
+                if (elec instanceof Hairdryer) {
+                    Hairdryer hairdryer = (Hairdryer) elec;
+                    listItemElectronics.add(new ItemElectronics(barcode, price, discount, promoText, description, image, hairdryer));
+                } else if (elec instanceof Laptop) {
+                    Laptop laptop = (Laptop) elec;
+                    listItemElectronics.add(new ItemElectronics(barcode, price, discount, promoText, description, image, laptop));
+                } else if (elec instanceof MobilePhone) {
+                    MobilePhone mobilePhone = (MobilePhone) elec;
+                    listItemElectronics.add(new ItemElectronics(barcode, price, discount, promoText, description, image, mobilePhone));
+                } else if (elec instanceof PC) {
+                    PC pc = (PC) elec;
+                    listItemElectronics.add(new ItemElectronics(barcode, price, discount, promoText, description, image, pc));
+                }
+            }
+
+            return listItemElectronics;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     @Override
     public Object getElectronics(int ID) {
         ElectronicsDAOImpl electronicsDAOImpl = new ElectronicsDAOImpl();

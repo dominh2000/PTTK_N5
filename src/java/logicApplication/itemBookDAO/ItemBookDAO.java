@@ -16,6 +16,7 @@ import model.itemBook.ItemBook;
 public interface ItemBookDAO {
     ItemBook getItemBookByCode(String code);
     List<ItemBook> searchByTitle(String title);
+    List<ItemBook> getAllItemBook();
     Book getBook(String isbn);
     List<Book> getBookByTitle(String title);
     ItemBook addItemBook(Book book, ItemBook itemBook);

@@ -149,7 +149,59 @@ public class ItemClothesDAOImpl implements ItemClothesDAO{
             }
         }
     }
+    
+    @Override
+    public List<ItemClothes> getAllItemClothes() {
+        List<ItemClothes> listItemClothes = new ArrayList<>();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
 
+        String query = "SELECT * FROM itemclothes";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String barcode = rs.getString("Barcode");
+                int feedbackId = rs.getInt("FeedbackID");
+                int cartId = rs.getInt("CartID");
+                int clothesId = rs.getInt("ClothesID");
+                float price = rs.getFloat("Price");
+                String discount = rs.getString("Discount");
+                String promoText = rs.getString("PromoText");
+                String description = rs.getString("Description");
+                String image = rs.getString("Image");
+
+                Object cloth = getClothes(clothesId);
+                if (cloth instanceof TShirt) {
+                    TShirt tShirt = (TShirt) cloth;
+                    listItemClothes.add(new ItemClothes(barcode, price, discount, promoText, description, image, tShirt));
+                } else if (cloth instanceof Coat) {
+                    Coat coat = (Coat) cloth;
+                    listItemClothes.add(new ItemClothes(barcode, price, discount, promoText, description, image, coat));
+                } else if (cloth instanceof Jeans) {
+                    Jeans jeans = (Jeans) cloth;
+                    listItemClothes.add(new ItemClothes(barcode, price, discount, promoText, description, image, jeans));
+                } else if (cloth instanceof Shorts) {
+                    Shorts shorts = (Shorts) cloth;
+                    listItemClothes.add(new ItemClothes(barcode, price, discount, promoText, description, image, shorts));
+                }
+            }
+
+            return listItemClothes;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
+    
     @Override
     public Object getClothes(int ID) {
         ClothesDAOImpl clothesDAOImpl = new ClothesDAOImpl();

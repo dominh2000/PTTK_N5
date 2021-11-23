@@ -111,6 +111,45 @@ public class ItemBookDAOImpl implements ItemBookDAO {
             }
         }
     }
+    
+    @Override
+    public List<ItemBook> getAllItemBook() {
+        List<ItemBook> listItemBooks = new ArrayList<>();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+
+        String query = "SELECT * FROM itembook";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String barcode = rs.getString("Barcode");
+                int feedbackId = rs.getInt("FeedbackID");
+                int cartId = rs.getInt("CartID");
+                String bookISBN = rs.getString("BookISBN");
+                float price = rs.getFloat("Price");
+                String discount = rs.getString("Discount");
+                String promoText = rs.getString("PromoText");
+                String description = rs.getString("Description");
+                String image = rs.getString("Image");
+                Book book = getBook(bookISBN);
+
+                listItemBooks.add(new ItemBook(barcode, price, discount, promoText, description, image, book));
+            }
+            return listItemBooks;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }
 
     @Override
     public Book getBook(String isbn) {

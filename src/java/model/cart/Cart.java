@@ -33,6 +33,12 @@ public class Cart implements Serializable{
     public Cart() {
     }
 
+    public Cart(int id, int amount, float price) {
+        this.id = id;
+        this.amount = amount;
+        this.price = price;
+    }
+    
     public Cart(int id, int amount, float price, List<ItemBook> itemBooks, List<ItemElectronics> itemElectronics, List<ItemClothes> itemClothes, List<ItemShoes> itemShoes, List<Cash> cashes, List<Credit> credits) {
         this.id = id;
         this.amount = amount;
