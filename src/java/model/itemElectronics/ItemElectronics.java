@@ -5,36 +5,71 @@
  */
 package model.itemElectronics;
 
+import model.electronics.Electronics;
+import model.electronics.Hairdryer;
+import model.electronics.Laptop;
+import model.electronics.MobilePhone;
+import model.electronics.PC;
+import model.feedback.Feedback;
+
 /**
  *
  * @author pc
  */
 public class ItemElectronics {
     private String barcode;
-    private int employeeId;
-    private int feedbackId;
-    private int cartId;
-    private int electronicsId;
     private float price;
     private String discount;
     private String promoText;
     private String description;
     private String image;
+    private Hairdryer hairdryer;
+    private Laptop laptop;
+    private MobilePhone mobilePhone;
+    private PC pc;
+    private Feedback feedback;
 
     public ItemElectronics() {
     }
 
-    public ItemElectronics(String barcode, int employeeId, int feedbackId, int cartId, int electronicsId, float price, String discount, String promoText, String description, String image) {
+    public ItemElectronics(String barcode, float price, String discount, String promoText, String description, String image, Hairdryer hairdryer) {
         this.barcode = barcode;
-        this.employeeId = employeeId;
-        this.feedbackId = feedbackId;
-        this.cartId = cartId;
-        this.electronicsId = electronicsId;
         this.price = price;
         this.discount = discount;
         this.promoText = promoText;
         this.description = description;
         this.image = image;
+        this.hairdryer = hairdryer;
+    }
+
+    public ItemElectronics(String barcode, float price, String discount, String promoText, String description, String image, Laptop laptop) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.laptop = laptop;
+    }
+
+    public ItemElectronics(String barcode, float price, String discount, String promoText, String description, String image, MobilePhone mobilePhone) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.mobilePhone = mobilePhone;
+    }
+
+    public ItemElectronics(String barcode, float price, String discount, String promoText, String description, String image, PC pc) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.pc = pc;
     }
 
     public String getBarcode() {
@@ -43,38 +78,6 @@ public class ItemElectronics {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getFeedbackId() {
-        return feedbackId;
-    }
-
-    public void setFeedbackId(int feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
-
-    public int getElectronicsId() {
-        return electronicsId;
-    }
-
-    public void setElectronicsId(int electronicsId) {
-        this.electronicsId = electronicsId;
     }
 
     public float getPrice() {
@@ -116,6 +119,45 @@ public class ItemElectronics {
     public void setImage(String image) {
         this.image = image;
     }
-    
+
+    public Hairdryer getHairdryer() {
+        return hairdryer;
+    }
+
+    public void setHairdryer(Hairdryer hairdryer) {
+        this.hairdryer = hairdryer;
+    }
+
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
+    public MobilePhone getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(MobilePhone mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public PC getPc() {
+        return pc;
+    }
+
+    public void setPc(PC pc) {
+        this.pc = pc;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
     
 }

@@ -11,6 +11,7 @@ import model.itemBook.ItemBook;
 import model.itemClothes.ItemClothes;
 import model.itemElectronics.ItemElectronics;
 import model.itemShoes.ItemShoes;
+import model.order.Payment;
 
 /**
  *
@@ -18,6 +19,7 @@ import model.itemShoes.ItemShoes;
  */
 public interface CartDAO {
     Cart getCartById(int id);
+    List<Payment> getListPaymentsOfCart(int cartID);
     boolean addItemBookToCart(ItemBook itemBook, Cart cart);
     boolean addItemElecToCart(ItemElectronics itemElec, Cart cart);
     boolean addItemShoesToCart(ItemShoes itemShoes, Cart cart);

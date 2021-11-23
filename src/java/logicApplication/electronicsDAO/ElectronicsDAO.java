@@ -17,7 +17,8 @@ import model.electronics.PC;
  * @author pc
  */
 public interface ElectronicsDAO {
-    List<Electronics> getByName(String name);
+    Object getByID(int id);
+    List<Object> getByName(String name);
     boolean addHairdryer(Electronics elec, Hairdryer hairdryer);
     boolean addMobilePhone(Electronics elec, MobilePhone mobile);
     boolean addLaptop(Electronics elec, Laptop laptop);

@@ -5,36 +5,71 @@
  */
 package model.itemShoes;
 
+import model.feedback.Feedback;
+import model.shoes.Boot;
+import model.shoes.BusinessShoes;
+import model.shoes.RunningShoes;
+import model.shoes.Shoes;
+import model.shoes.Sneaker;
+
 /**
  *
  * @author pc
  */
 public class ItemShoes {
     private String barcode;
-    private int employeeId;
-    private int feedbackId;
-    private int cartId;
-    private int shoesId;
     private float price;
     private String discount;
     private String promoText;
     private String description;
     private String image;
+    private Sneaker sneaker;
+    private RunningShoes runningShoes;
+    private BusinessShoes businessShoes;
+    private Boot boot;
+    private Feedback feedback;
 
     public ItemShoes() {
     }
 
-    public ItemShoes(String barcode, int employeeId, int feedbackId, int cartId, int shoesId, float price, String discount, String promoText, String description, String image) {
+    public ItemShoes(String barcode, float price, String discount, String promoText, String description, String image, Sneaker sneaker) {
         this.barcode = barcode;
-        this.employeeId = employeeId;
-        this.feedbackId = feedbackId;
-        this.cartId = cartId;
-        this.shoesId = shoesId;
         this.price = price;
         this.discount = discount;
         this.promoText = promoText;
         this.description = description;
         this.image = image;
+        this.sneaker = sneaker;
+    }
+
+    public ItemShoes(String barcode, float price, String discount, String promoText, String description, String image, RunningShoes runningShoes) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.runningShoes = runningShoes;
+    }
+
+    public ItemShoes(String barcode, float price, String discount, String promoText, String description, String image, BusinessShoes businessShoes) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.businessShoes = businessShoes;
+    }
+
+    public ItemShoes(String barcode, float price, String discount, String promoText, String description, String image, Boot boot) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.boot = boot;
     }
 
     public String getBarcode() {
@@ -43,38 +78,6 @@ public class ItemShoes {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getFeedbackId() {
-        return feedbackId;
-    }
-
-    public void setFeedbackId(int feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
-
-    public int getShoesId() {
-        return shoesId;
-    }
-
-    public void setShoesId(int shoesId) {
-        this.shoesId = shoesId;
     }
 
     public float getPrice() {
@@ -116,5 +119,46 @@ public class ItemShoes {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public Sneaker getSneaker() {
+        return sneaker;
+    }
+
+    public void setSneaker(Sneaker sneaker) {
+        this.sneaker = sneaker;
+    }
+
+    public RunningShoes getRunningShoes() {
+        return runningShoes;
+    }
+
+    public void setRunningShoes(RunningShoes runningShoes) {
+        this.runningShoes = runningShoes;
+    }
+
+    public BusinessShoes getBusinessShoes() {
+        return businessShoes;
+    }
+
+    public void setBusinessShoes(BusinessShoes businessShoes) {
+        this.businessShoes = businessShoes;
+    }
+
+    public Boot getBoot() {
+        return boot;
+    }
+
+    public void setBoot(Boot boot) {
+        this.boot = boot;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+    
     
 }

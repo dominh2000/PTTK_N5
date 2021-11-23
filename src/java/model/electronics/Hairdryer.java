@@ -22,7 +22,7 @@ public class Hairdryer extends Electronics implements Serializable{
 
     public Hairdryer() {
     }
-
+    
     public Hairdryer(String hairType, float wattage, String material, int voltage, int speedSettings, int heatSettings, int id, String name, String manufacturer, Date manufactureDate, float weight, String color, int warranty, String dimensions, String countryOrigin) {
         super(id, name, manufacturer, manufactureDate, weight, color, warranty, dimensions, countryOrigin);
         this.hairType = hairType;

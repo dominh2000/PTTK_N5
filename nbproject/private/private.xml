@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemClothesDAO/ItemClothesDAO.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemClothesDAO/ItemClothesDAOImpl.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemElectronicsDAO/ItemElectronicsDAO.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemShoesDAO/ItemShoesDAOImpl.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemBookDAO/ItemBookDAO.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemElectronicsDAO/ItemElectronicsDAOImpl.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemBookDAO/ItemBookDAOImpl.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/itemShoesDAO/ItemShoesDAO.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/cartDAO/CartDAOImpl.java</file>
+        </group>
     </open-files>
 </project-private>

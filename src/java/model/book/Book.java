@@ -15,8 +15,6 @@ import java.util.List;
  */
 public class Book implements Serializable{
     private String isbn;
-    private int categoryId;
-    private int publisherId;
     private List<Author> author;
     private Publisher publisher;
     private Category category;
@@ -33,20 +31,6 @@ public class Book implements Serializable{
     public Book() {
     }
 
-    public Book(String isbn, int categoryId, int publisherId, String title, String summary, Date publicatioDate, int numOfPages, String language, String dimensions, float weight, String edition) {
-        this.isbn = isbn;
-        this.categoryId = categoryId;
-        this.publisherId = publisherId;
-        this.title = title;
-        this.summary = summary;
-        this.publicatioDate = publicatioDate;
-        this.numOfPages = numOfPages;
-        this.language = language;
-        this.dimensions = dimensions;
-        this.weight = weight;
-        this.edition = edition;
-    }
-    
     public Book(String isbn, List<Author> author, Publisher publisher, Category category, String title, String summary, Date publicatioDate, int numOfPages, String language, String dimensions, float weight, String edition) {
         this.isbn = isbn;
         this.author = author;
@@ -156,22 +140,6 @@ public class Book implements Serializable{
 
     public void setEdition(String edition) {
         this.edition = edition;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public int getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(int publisherId) {
-        this.publisherId = publisherId;
     }
     
     

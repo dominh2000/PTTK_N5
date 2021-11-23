@@ -16,7 +16,8 @@ import model.itemClothes.ItemClothes;
 public interface ItemClothesDAO {
     ItemClothes getItemClothesByCode(String code);
     List<ItemClothes> searchByName(String name);
-    Object getClothes(Clothes clothes);
+    Object getClothes(int ID);
+    List<Object> getClothesByName(String name);
     ItemClothes addItemClothes(Clothes clothes, ItemClothes itemClothes);
     boolean deleteItemClothes(ItemClothes itemClothes);
     ItemClothes modifyItemClothes(ItemClothes itemClothes);

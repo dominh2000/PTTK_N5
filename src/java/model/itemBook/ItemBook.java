@@ -6,6 +6,8 @@
 package model.itemBook;
 
 import java.io.Serializable;
+import model.book.Book;
+import model.feedback.Feedback;
 
 /**
  *
@@ -13,30 +15,36 @@ import java.io.Serializable;
  */
 public class ItemBook implements Serializable{
     private String barcode;
-    private int employeeId;
-    private int feedbackId;
-    private int cartId;
-    private String bookISBN;
     private float price;
     private String discount;
     private String promoText;
     private String description;
     private String image;
+    private Book book;
+    private Feedback feedback;
 
     public ItemBook() {
     }
 
-    public ItemBook(String barcode, int employeeId, int feedbackId, int cartId, String bookISBN, float price, String discount, String promoText, String description, String image) {
+    public ItemBook(String barcode, float price, String discount, String promoText, String description, String image, Book book) {
         this.barcode = barcode;
-        this.employeeId = employeeId;
-        this.feedbackId = feedbackId;
-        this.cartId = cartId;
-        this.bookISBN = bookISBN;
         this.price = price;
         this.discount = discount;
         this.promoText = promoText;
         this.description = description;
         this.image = image;
+        this.book = book;
+    }
+    
+    public ItemBook(String barcode, float price, String discount, String promoText, String description, String image, Book book, Feedback feedback) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.book = book;
+        this.feedback = feedback;
     }
 
     public String getBarcode() {
@@ -45,38 +53,6 @@ public class ItemBook implements Serializable{
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getFeedbackId() {
-        return feedbackId;
-    }
-
-    public void setFeedbackId(int feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
-
-    public String getBookISBN() {
-        return bookISBN;
-    }
-
-    public void setBookISBN(String bookISBN) {
-        this.bookISBN = bookISBN;
     }
 
     public float getPrice() {
@@ -117,6 +93,22 @@ public class ItemBook implements Serializable{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
     }
     
     

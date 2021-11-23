@@ -6,6 +6,12 @@
 package model.itemClothes;
 
 import java.io.Serializable;
+import model.clothes.Clothes;
+import model.clothes.Coat;
+import model.clothes.Jeans;
+import model.clothes.Shorts;
+import model.clothes.TShirt;
+import model.feedback.Feedback;
 
 /**
  *
@@ -13,30 +19,58 @@ import java.io.Serializable;
  */
 public class ItemClothes implements Serializable{
     private String barcode;
-    private int employeeId;
-    private int feedbackId;
-    private int cartId;
-    private int clothesId;
     private float price;
     private String discount;
     private String promoText;
     private String description;
     private String image;
+    private TShirt tShirt;
+    private Coat coat;
+    private Jeans jeans;
+    private Shorts shorts;
+    private Feedback feedback;
 
     public ItemClothes() {
     }
 
-    public ItemClothes(String barcode, int employeeId, int feedbackId, int cartId, int clothesId, float price, String discount, String promoText, String description, String image) {
+    public ItemClothes(String barcode, float price, String discount, String promoText, String description, String image, TShirt tShirt) {
         this.barcode = barcode;
-        this.employeeId = employeeId;
-        this.feedbackId = feedbackId;
-        this.cartId = cartId;
-        this.clothesId = clothesId;
         this.price = price;
         this.discount = discount;
         this.promoText = promoText;
         this.description = description;
         this.image = image;
+        this.tShirt = tShirt;
+    }
+
+    public ItemClothes(String barcode, float price, String discount, String promoText, String description, String image, Coat coat) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.coat = coat;
+    }
+
+    public ItemClothes(String barcode, float price, String discount, String promoText, String description, String image, Jeans jeans) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.jeans = jeans;
+    }
+
+    public ItemClothes(String barcode, float price, String discount, String promoText, String description, String image, Shorts shorts) {
+        this.barcode = barcode;
+        this.price = price;
+        this.discount = discount;
+        this.promoText = promoText;
+        this.description = description;
+        this.image = image;
+        this.shorts = shorts;
     }
 
     public String getBarcode() {
@@ -45,38 +79,6 @@ public class ItemClothes implements Serializable{
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public int getFeedbackId() {
-        return feedbackId;
-    }
-
-    public void setFeedbackId(int feedbackId) {
-        this.feedbackId = feedbackId;
-    }
-
-    public int getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(int cartId) {
-        this.cartId = cartId;
-    }
-
-    public int getClothesId() {
-        return clothesId;
-    }
-
-    public void setClothesId(int clothesId) {
-        this.clothesId = clothesId;
     }
 
     public float getPrice() {
@@ -118,6 +120,46 @@ public class ItemClothes implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-    
+
+    public TShirt gettShirt() {
+        return tShirt;
+    }
+
+    public void settShirt(TShirt tShirt) {
+        this.tShirt = tShirt;
+    }
+
+    public Coat getCoat() {
+        return coat;
+    }
+
+    public void setCoat(Coat coat) {
+        this.coat = coat;
+    }
+
+    public Jeans getJeans() {
+        return jeans;
+    }
+
+    public void setJeans(Jeans jeans) {
+        this.jeans = jeans;
+    }
+
+    public Shorts getShorts() {
+        return shorts;
+    }
+
+    public void setShorts(Shorts shorts) {
+        this.shorts = shorts;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
     
 }

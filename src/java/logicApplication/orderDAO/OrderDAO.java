@@ -13,6 +13,7 @@ import model.cart.*;
  */
 public interface OrderDAO {
     
+    Object getPaymentByID(int id);
     boolean addOrder(Order order, Cart cart, Payment payment, Shipment shipment);
     boolean updateOrder(Order order, Cart cart, Payment payment, Shipment shipment);
     boolean deleteOrder(Order order);

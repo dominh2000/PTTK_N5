@@ -16,6 +16,7 @@ import model.book.Publisher;
  * @author pc
  */
 public interface BookDAO {
+    Book getByISBN(String isbn);
     List<Book> getByTitle(String title);
     Book addBook(Book book, Publisher publisher, Author author, Category cat);
     boolean modifyBookInfo(Book book, Publisher publisher, Author author, Category cat);

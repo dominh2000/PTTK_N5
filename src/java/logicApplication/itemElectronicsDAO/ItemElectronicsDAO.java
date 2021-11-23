@@ -16,7 +16,8 @@ import model.itemElectronics.ItemElectronics;
 public interface ItemElectronicsDAO {
     ItemElectronics getItemElecByCode(String code);
     List<ItemElectronics> searchByName(String name);
-    Object getElectronics(Electronics electronics);
+    Object getElectronics(int ID);
+    List<Object> getElecByName(String name);
     ItemElectronics addItemElectronics(Electronics elec, ItemElectronics itemElec);
     boolean deleteItemElec(ItemElectronics itemElec);
     ItemElectronics modifyItemElec(ItemElectronics itemElec);

@@ -16,7 +16,8 @@ import model.itemBook.ItemBook;
 public interface ItemBookDAO {
     ItemBook getItemBookByCode(String code);
     List<ItemBook> searchByTitle(String title);
-    Book getBook(Book book);
+    Book getBook(String isbn);
+    List<Book> getBookByTitle(String title);
     ItemBook addItemBook(Book book, ItemBook itemBook);
     boolean deleteItemBook(ItemBook itemBook);
     ItemBook modifyItemBook(ItemBook itemBook);

@@ -17,7 +17,8 @@ import model.clothes.TShirt;
  * @author pc
  */
 public interface ClothesDAO {
-    List<Clothes> getByName(String name);
+    Object getByID(int id);
+    List<Object> getByName(String name);
     boolean addTShirt(Clothes clothes, TShirt tShirt);
     boolean addCoat(Clothes clothes, Coat coat);
     boolean addJeans(Clothes clothes, Jeans jeans);

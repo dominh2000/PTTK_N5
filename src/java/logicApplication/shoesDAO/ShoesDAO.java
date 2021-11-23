@@ -17,7 +17,8 @@ import model.shoes.Sneaker;
  * @author pc
  */
 public interface ShoesDAO {
-    List<Shoes> getByName(String name);
+    Object getByID(int id);
+    List<Object> getByName(String name);
     boolean addSneaker(Shoes shoes, Sneaker sneaker);
     boolean addBusinessShoes(Shoes shoes, BusinessShoes businessShoes);
     boolean addRunShoes(Shoes shoes, RunningShoes runShoes);
