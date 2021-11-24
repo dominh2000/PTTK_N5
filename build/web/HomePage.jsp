@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.*" import="java.io.*"%>
+<%@ page import="java.util.*" import="java.io.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,7 +40,6 @@
                     }
 
                 }
-                
                 Cookie pathCookie = new Cookie("prePath", "Home");
                 response.addCookie(pathCookie);
 
@@ -115,7 +114,7 @@
 
 
                             <div class="dropdown">
-                                <a href="<%=request.getContextPath()%>/BookPage"><span class="span-1">Sách</span></a>
+                                <a href="<%=request.getContextPath()%>/BookPage"><span class="span-1 ">Sách</span></a>
                                 <div class="dropdown-content">
                                     <a href="#"><span class="span-2">Văn học</a>
                                     <a href="#"><span class="span-2">Giáo dục</a>
@@ -207,7 +206,7 @@
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="accountID" value="<%=accountID%>" />
                                     <input type="hidden" name="cartID" value="<%=cartID%>" />
-                                    <button type="submit" style="color:black; background-color:orange;border:1px solid orange">Thêm vào giỏ hàng</button>
+                                    <button class="add-to-cart" type="submit">Thêm vào <br> giỏ hàng</button>
                                 </form></td>
                         </tr>
                     </c:forEach>
@@ -216,7 +215,7 @@
         </main>
         <footer>
             <div class="main-content">
-                <div class="left box">
+                <div class="left box" style="">
                     <h2>
                         Địa chỉ</h2>
                     <div class="content">
@@ -238,7 +237,7 @@
                 <div class="center box">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.3024241108965!2d105.78573631532709!3d20.980510994798752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1637076035857!5m2!1svi!2s" 
-                        width="600" 
+                        width="500" 
                         height="300" 
                         style="border:0;" 
                         allowfullscreen="" 

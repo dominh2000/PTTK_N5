@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -85,12 +86,20 @@ public class CartServlet extends HttpServlet {
         }
         System.out.println(cartID);
         
-        Cart cart = cartDAOImpl.getCartById(Integer.parseInt(cartID));
-        List<ItemBook> itemBooks = cartDAOImpl.getItemBookOfCart(cart);
-	
-        request.setAttribute("totalAmount", cart.getAmount());
-        request.setAttribute("totalPrice", cart.getPrice());
-        request.setAttribute("listItemBooks", itemBooks);
+        if (cartID != "") {
+            Cart cart = cartDAOImpl.getCartById(Integer.parseInt(cartID));
+            List<ItemBook> itemBooks = cartDAOImpl.getItemBookOfCart(cart);
+
+            request.setAttribute("totalAmount", cart.getAmount());
+            request.setAttribute("totalPrice", cart.getPrice());
+            request.setAttribute("listItemBooks", itemBooks);
+        } else {
+            List<ItemBook> itemBooks = new ArrayList<>();
+
+            request.setAttribute("totalAmount", 0);
+            request.setAttribute("totalPrice", 0);
+            request.setAttribute("listItemBooks", itemBooks);
+        }
         request.getRequestDispatcher("Cart.jsp").forward(request, response);
     }
 }

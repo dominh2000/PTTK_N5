@@ -1,18 +1,18 @@
 <%-- 
-    Document   : BookPage
-    Created on : Nov 23, 2021, 11:37:43 PM
+    Document   : HomePage
+    Created on : Nov 14, 2021, 9:25:49 PM
     Author     : pc
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.*" import="java.io.*"%>
+<%@ page import="java.util.*" import="java.io.*"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sách</title>
+        <title>Trang chủ</title>
         <style>
             <%@include file="/css/homeStyle.css"%>
         </style>
@@ -25,8 +25,8 @@
         <header>
             <%
 
-                String accountID = "";
-                String cartID = "";
+                String accountID = null;
+                String cartID = null;
                 Cookie[] cookies = request.getCookies();
 
                 if (cookies != null) {
@@ -40,7 +40,7 @@
                     }
 
                 }
-                Cookie pathCookie = new Cookie("prePath", "BookPage");
+                Cookie pathCookie = new Cookie("prePath", "Home");
                 response.addCookie(pathCookie);
 
             %>
@@ -71,10 +71,10 @@
                     <form class="myform" action="Cart" method="post">
                         <button class="control-btn">
                             <i class="fa fa-shopping-bag fa-lg"></i>
-                            <span>Đơn hàng</span>
+                            <span>Đơn hàng </span>
                         </button>
                     </form>
-                    <form class="myform" action="CartServlet" method="post">
+                    <form class="myform" action="Cart" method="post">
                         <button class="control-btn">
                             <i class="fa fa-shopping-cart fa-lg"></i>
                             <span>Giỏ hàng</span>
@@ -114,7 +114,7 @@
 
 
                             <div class="dropdown">
-                                <a href="<%=request.getContextPath()%>/BookPage"><span class="span-1">Sách</span></a>
+                                <a href="<%=request.getContextPath()%>/BookPage"><span class="span-1 ">Sách</span></a>
                                 <div class="dropdown-content">
                                     <a href="#"><span class="span-2">Văn học</a>
                                     <a href="#"><span class="span-2">Giáo dục</a>
@@ -190,18 +190,8 @@
                 <table style="width:100%; border:1px solid">		
                     <tr>
                         <th>Ảnh</th>
-                        <th>Tên sách</th>
-                        <th>ISBN</th>
-                        <th>Tác giả</th>
-                        <th>Tóm lược</th>
-                        <th>Ngày xuất bản</th>
-                        <th>Nhà xuất bản</th>
-                        <th>Ấn bản</th>
-                        <th>Số trang</th>
-                        <th>Thể loại</th>
-                        <th>Ngôn ngữ</th>
-                        <th>Khối lượng</th>
-                        <th>Kích thước</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Mô tả</th>
                         <th>Giá</th>
                         <th>Thao tác</th>
                     </tr>
@@ -209,28 +199,14 @@
                         <tr>
                             <td align="center"><img src="${itemBook.image}" alt="${itemBook.book.title}" style="width:175px;height:250px;"></td>
                             <td align="center">${itemBook.book.title}</td>
-                            <td align="center">${itemBook.book.isbn}</td>
-                            <td align="center">
-                                <c:forEach items="${itemBook.book.author}" var="auth">
-                                    ${auth.name}
-                                </c:forEach>
-                            </td>
-                            <td align="center">${itemBook.book.summary}</td>
-                            <td align="center">${itemBook.book.publicatioDate}</td>
-                            <td align="center">${itemBook.book.publisher.name}</td>
-                            <td align="center">${itemBook.book.edition}</td>
-                            <td align="center">${itemBook.book.numOfPages}</td>
-                            <td align="center">${itemBook.book.category.type}</td>
-                            <td align="center">${itemBook.book.language}</td>
-                            <td align="center">${itemBook.book.weight} g</td>
-                            <td align="center">${itemBook.book.dimensions}</td>
+                            <td align="center">${itemBook.description}</td>
                             <td align="center">${itemBook.price} VNĐ</td>
                             <td align="center"><form action="AddToCart" method="post">
                                     <input type="hidden" name="itemID" value="${itemBook.barcode}"/>
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="accountID" value="<%=accountID%>" />
                                     <input type="hidden" name="cartID" value="<%=cartID%>" />
-                                    <button class="add-to-cart" type="submit" style="">Thêm vào giỏ hàng</button>
+                                    <button class="add-to-cart" type="submit">Thêm vào <br> giỏ hàng</button>
                                 </form></td>
                         </tr>
                     </c:forEach>
@@ -239,7 +215,7 @@
         </main>
         <footer>
             <div class="main-content">
-                <div class="left box">
+                <div class="left box" style="">
                     <h2>
                         Địa chỉ</h2>
                     <div class="content">
