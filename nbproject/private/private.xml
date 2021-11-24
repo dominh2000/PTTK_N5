@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/BTL_PTTK/web/HomePage.jsp</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/controller/Home.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/web/Cart.jsp</file>
             <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/controller/AddToCart.java</file>
             <file>file:/D:/NetBeansProjects/BTL_PTTK/web/BookPage.jsp</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/logicApplication/cartDAO/CartDAOImpl.java</file>
+            <file>file:/D:/NetBeansProjects/BTL_PTTK/src/java/controller/CartServlet.java</file>
         </group>
     </open-files>
 </project-private>

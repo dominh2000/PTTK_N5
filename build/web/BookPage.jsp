@@ -40,9 +40,8 @@
                     }
 
                 }
-                Cookie pathCookie = new Cookie("prePath", "Home");
+                Cookie pathCookie = new Cookie("prePath", "BookPage");
                 response.addCookie(pathCookie);
-
             %>
 
             <!-- for logo page -->
@@ -74,7 +73,7 @@
                             <span>Đơn hàng</span>
                         </button>
                     </form>
-                    <form class="myform" action="Cart" method="post">
+                    <form class="myform" action="CartServlet" method="post">
                         <button class="control-btn">
                             <i class="fa fa-shopping-cart fa-lg"></i>
                             <span>Giỏ hàng</span>
@@ -226,7 +225,7 @@
                             <td align="center">${itemBook.book.dimensions}</td>
                             <td align="center">${itemBook.price} VNĐ</td>
                             <td align="center"><form action="AddToCart" method="post">
-                                    <input type="hidden" name="item" value="itemBook"/>
+                                    <input type="hidden" name="itemID" value="${itemBook.barcode}"/>
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="accountID" value="<%=accountID%>" />
                                     <input type="hidden" name="cartID" value="<%=cartID%>" />

@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page import="java.util.*" import="java.io.*"%>
+<%@page import="java.util.*" import="java.io.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,8 +25,8 @@
         <header>
             <%
 
-                String accountID = null;
-                String cartID = null;
+                String accountID = "";
+                String cartID = "";
                 Cookie[] cookies = request.getCookies();
 
                 if (cookies != null) {
@@ -40,6 +40,7 @@
                     }
 
                 }
+                
                 Cookie pathCookie = new Cookie("prePath", "Home");
                 response.addCookie(pathCookie);
 
@@ -74,7 +75,7 @@
                             <span>Đơn hàng </span>
                         </button>
                     </form>
-                    <form class="myform" action="Cart" method="post">
+                    <form class="myform" action="CartServlet" method="post">
                         <button class="control-btn">
                             <i class="fa fa-shopping-cart fa-lg"></i>
                             <span>Giỏ hàng</span>

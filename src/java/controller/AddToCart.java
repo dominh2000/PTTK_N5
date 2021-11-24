@@ -8,6 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logicApplication.cartDAO.CartDAOImpl;
+import logicApplication.itemBookDAO.ItemBookDAOImpl;
+import model.cart.Cart;
+import model.itemBook.ItemBook;
 
 /**
  *
@@ -68,12 +72,33 @@ public class AddToCart extends HttpServlet {
 
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
         CartDAOImpl cartDAOImpl = new CartDAOImpl();
+        ItemBookDAOImpl itemBookDAOImpl = new ItemBookDAOImpl();
+        
         String itemID = request.getParameter("itemID");
         String accountID = request.getParameter("accountID");
-        String cartId = request.getParameter("cartID");
+        String cartId;
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-
+        
+        if(request.getParameter("cartID").isEmpty()){
+            Cart cart = cartDAOImpl.createCart();
+            Cookie cartCookie = new Cookie("cartID", Integer.toString(cart.getId()));
+            cartCookie.setMaxAge(60*60);
+            response.addCookie(cartCookie);
+            cartId = Integer.toString(cart.getId());
+        } else{
+            cartId = request.getParameter("cartID");
+            System.out.println(cartId);
+        }
+        
+        System.out.println("Them vao gio hang co ma " + cartId);
+        Cart cartNew = cartDAOImpl.getCartById(Integer.parseInt(cartId));
+        ItemBook itemBook = itemBookDAOImpl.getItemBookByCode(itemID);
+        if(cartDAOImpl.addItemBookToCart(itemBook, cartNew)){
+            List<ItemBook> itemBooks = cartNew.getItemBooks();
+            itemBooks.add(itemBook);
+            cartNew.setItemBooks(itemBooks);
+        }
+        
         String prePath = "";
         Cookie[] cookies = request.getCookies();
 
@@ -86,11 +111,7 @@ public class AddToCart extends HttpServlet {
 
         }
         System.out.println(prePath);
-        if (prePath.equals("Home")) {
-            response.sendRedirect("Home");
-        } else if (prePath.equals("Cart")) {
-            response.sendRedirect("Cart");
-        }
+        response.sendRedirect(prePath);
 
     }
 

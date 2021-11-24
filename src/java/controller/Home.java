@@ -7,10 +7,13 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logicApplication.cartDAO.CartDAOImpl;
 import logicApplication.itemBookDAO.ItemBookDAOImpl;
+import model.cart.Cart;
 import model.itemBook.ItemBook;
 
 /**
@@ -55,9 +58,11 @@ public class Home extends HttpServlet {
         // TODO Auto-generated method stub
         doGet(request, response);
     }
-
+    
     private void showHomePage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         RequestDispatcher dispatcher = null;
+        
+        // Hien thi danh sach mat hang
         ItemBookDAOImpl itemBookDAOImpl = new ItemBookDAOImpl();
         List<ItemBook> itemBooks = itemBookDAOImpl.getAllItemBook();
         request.setAttribute("listItemBook", itemBooks);

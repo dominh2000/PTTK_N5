@@ -19,7 +19,7 @@ import model.order.Payment;
  * @author pc
  */
 public interface CartDAO {
-    Cart createCart(Order order);
+    Cart createCart();
     Cart getCartById(int id);
     List<Payment> getListPaymentsOfCart(int cartID);
     boolean addItemBookToCart(ItemBook itemBook, Cart cart);
