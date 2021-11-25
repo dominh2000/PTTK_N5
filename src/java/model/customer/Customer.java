@@ -12,7 +12,7 @@ import java.util.Date;
  * @author pc
  */
 public class Customer {
-    private int customerID;
+    private int customerCodeCust;
     private Date dateOfBirth;
     private String telephone;
     private FullName fullname;
@@ -20,7 +20,7 @@ public class Customer {
     private Address address;
 
     public Customer(int customerID, Date dateOfBirth, String telephone, FullName fullname, Account account, Address address) {
-        this.customerID = customerID;
+        this.customerCodeCust = customerID;
         this.dateOfBirth = dateOfBirth;
         this.telephone = telephone;
         this.fullname = fullname;
@@ -29,11 +29,11 @@ public class Customer {
     }
 
     public int getCustomerID() {
-        return customerID;
+        return customerCodeCust;
     }
 
     public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+        this.customerCodeCust = customerID;
     }
 
     public Date getDateOfBirth() {

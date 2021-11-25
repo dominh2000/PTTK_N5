@@ -11,18 +11,46 @@ package model.order;
  */
 public class Shipment {
     private int id;
-    private int OrderID;
+    private int orderID;
     private String method;
     private float cost;
     private String shippingAddress;
+    private Payment payment;
 
-    public Shipment(int id, int OrderID, String method, float cost, String shippingAddress) {
+    public Shipment(int id, String method, float cost, String shippingAddress, Payment payment) {
         this.id = id;
-        this.OrderID = OrderID;
         this.method = method;
         this.cost = cost;
         this.shippingAddress = shippingAddress;
+        this.payment = payment;
     }
+
+    public Shipment(int id, int orderID, String method, float cost, String shippingAddress, Payment payment) {
+        this.id = id;
+        this.orderID = orderID;
+        this.method = method;
+        this.cost = cost;
+        this.shippingAddress = shippingAddress;
+        this.payment = payment;
+    }
+    
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+    
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    
 
     public int getId() {
         return id;
@@ -32,13 +60,7 @@ public class Shipment {
         this.id = id;
     }
 
-    public int getOrderID() {
-        return OrderID;
-    }
-
-    public void setOrderID(int OrderID) {
-        this.OrderID = OrderID;
-    }
+  
 
     public String getMethod() {
         return method;

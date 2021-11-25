@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Address implements Serializable{
     private int id;
     private int employeeId;
-    private int customerId;
+    private int customerCodeCust;
     private int noHouse;
     private String street;
     private String district;
@@ -26,7 +26,7 @@ public class Address implements Serializable{
     public Address(int id, int employeeId, int customerId, int noHouse, String street, String district, String city) {
         this.id = id;
         this.employeeId = employeeId;
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
         this.noHouse = noHouse;
         this.street = street;
         this.district = district;
@@ -42,11 +42,11 @@ public class Address implements Serializable{
     }
 
     public int getCustomerId() {
-        return customerId;
+        return customerCodeCust;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
     }
 
     

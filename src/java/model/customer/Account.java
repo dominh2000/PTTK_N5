@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Account implements Serializable{
     private int id;
     private int employeeId;
-    private int customerId;
+    private int customerCodeCust;
     private String username;
     private String password;
 
@@ -24,7 +24,7 @@ public class Account implements Serializable{
     public Account(int id, int employeeId, int customerId, String username, String password) {
         this.id = id;
         this.employeeId = employeeId;
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
         this.username = username;
         this.password = password;
     }
@@ -46,11 +46,11 @@ public class Account implements Serializable{
     }
 
     public int getCustomerId() {
-        return customerId;
+        return customerCodeCust;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
     }
 
     public String getUsername() {

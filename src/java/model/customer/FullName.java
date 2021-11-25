@@ -12,7 +12,7 @@ package model.customer;
 public class FullName {
     private int id;
     private int employeeId;
-    private int customerId;
+    private int customerCodeCust;
     private String firstName;
     private String lastName;
     private String midName;
@@ -20,7 +20,7 @@ public class FullName {
     public FullName(int id, int employeeId, int customerId, String firstName, String lastName, String midName) {
         this.id = id;
         this.employeeId = employeeId;
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.midName = midName;
@@ -35,11 +35,11 @@ public class FullName {
     }
 
     public int getCustomerId() {
-        return customerId;
+        return customerCodeCust;
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+        this.customerCodeCust = customerId;
     }
 
     

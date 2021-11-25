@@ -21,6 +21,7 @@ import model.order.Payment;
  */
 public class Cart implements Serializable{
     private int id;
+    private int orderID;
     private int amount;
     private float price;
     private List<ItemBook> itemBooks;
@@ -38,7 +39,14 @@ public class Cart implements Serializable{
         this.amount = amount;
         this.price = price;
     }
-    
+
+    public Cart(int id, int orderID, int amount, float price) {
+        this.id = id;
+        this.orderID = orderID;
+        this.amount = amount;
+        this.price = price;
+    }
+
     public Cart(int id, int amount, float price, List<ItemBook> itemBooks, List<ItemElectronics> itemElectronics, List<ItemClothes> itemClothes, List<ItemShoes> itemShoes, List<Cash> cashes, List<Credit> credits) {
         this.id = id;
         this.amount = amount;
@@ -50,6 +58,29 @@ public class Cart implements Serializable{
         this.cashes = cashes;
         this.credits = credits;
     }
+    
+    public Cart(int id, int orderID, int amount, float price, List<ItemBook> itemBooks, List<ItemElectronics> itemElectronics, List<ItemClothes> itemClothes, List<ItemShoes> itemShoes, List<Cash> cashes, List<Credit> credits) {
+        this.id = id;
+        this.orderID = orderID;
+        this.amount = amount;
+        this.price = price;
+        this.itemBooks = itemBooks;
+        this.itemElectronics = itemElectronics;
+        this.itemClothes = itemClothes;
+        this.itemShoes = itemShoes;
+        this.cashes = cashes;
+        this.credits = credits;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+    
+    
 
     public int getId() {
         return id;
