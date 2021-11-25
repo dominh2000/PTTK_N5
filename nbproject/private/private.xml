@@ -5,7 +5,7 @@
         <group>
             <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/model/order/Shipment.java</file>
             <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/model/order/Payment.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/model/order/Credit.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/logicApplication/customerDAO/CustomerDAOImpl.java</file>
             <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/logicApplication/orderDAO/OrderDaoImpl.java</file>
             <file>file:/C:/Users/ASUS/Desktop/pttk/PTTK_N5/src/java/model/order/Order.java</file>
         </group>

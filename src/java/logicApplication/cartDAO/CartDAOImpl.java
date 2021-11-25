@@ -50,23 +50,21 @@ import model.shoes.Sneaker;
 public class CartDAOImpl implements CartDAO {
     
     @Override
-    public Cart createCart(Order order) {
+    public Cart createCart() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        String query1 = "INSERT INTO cart (OrderID, Amount, TotalPrice) VALUES (?,?,?)";
-        String query2 = "SELECT * FROM cart WHERE OrderID = ?";
+        String query1 = "INSERT INTO cart (Amount, TotalPrice) VALUES (?,?)";
+        String query2 = "SELECT * FROM cart ORDER BY ID DESC LIMIT 1";
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             ps = connection.prepareStatement(query1);
-            ps.setInt(1, order.getId());
-            ps.setInt(2, 0);
-            ps.setFloat(3, 0);
+            ps.setInt(1, 0);
+            ps.setFloat(2, 0);
             ps.executeUpdate();
             
             Cart cart = null;
             ps = connection.prepareStatement(query2);
-            ps.setInt(1, order.getId());
             rs = ps.executeQuery();
             if(rs.next()){
                 int cartID = rs.getInt("ID");
@@ -106,6 +104,7 @@ public class CartDAOImpl implements CartDAO {
                 int amount = rs.getInt("Amount");
                 float totalPrice = rs.getFloat("TotalPrice");
 
+                cart = new Cart(id, amount, totalPrice);
                 List<ItemBook> itemBooks = getItemBookOfCart(cart);
                 List<ItemElectronics> itemElectronics = getItemElecOfCart(cart);
                 List<ItemClothes> itemClothes = getItemClothesOfCart(cart);
@@ -137,7 +136,6 @@ public class CartDAOImpl implements CartDAO {
             DBUtil.closePreparedStatement(ps);
             pool.freeConnection(connection);
         }
-
     }
 
     @Override
@@ -177,7 +175,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itembook SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount + 1, Price = Price + ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount + 1, TotalPrice = TotalPrice + ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -206,7 +204,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemelectronics SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount + 1, Price = Price + ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount + 1, TotalPrice = TotalPrice + ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -235,7 +233,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemshoes SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount + 1, Price = Price + ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount + 1, TotalPrice = TotalPrice + ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -264,7 +262,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemclothes SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount + 1, Price = Price + ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount + 1, TotalPrice = TotalPrice + ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -293,7 +291,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itembook SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount - 1, Price = Price - ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount - 1, TotalPrice = TotalPrice - ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -322,7 +320,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemelectronics SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount - 1, Price = Price - ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount - 1, TotalPrice = TotalPrice - ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -351,7 +349,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemclothes SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount - 1, Price = Price - ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount - 1, TotalPrice = TotalPrice - ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {
@@ -380,7 +378,7 @@ public class CartDAOImpl implements CartDAO {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         String query1 = "UPDATE itemshoes SET CartID = ? WHERE Barcode = ?";
-        String query2 = "UPDATE cart SET Amount = Amount - 1, Price = Price - ? WHERE ID = ?";
+        String query2 = "UPDATE cart SET Amount = Amount - 1, TotalPrice = TotalPrice - ? WHERE ID = ?";
         PreparedStatement ps = null;
 
         try {

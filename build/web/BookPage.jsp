@@ -25,8 +25,8 @@
         <header>
             <%
 
-                String accountID = null;
-                String cartID = null;
+                String accountID = "";
+                String cartID = "";
                 Cookie[] cookies = request.getCookies();
 
                 if (cookies != null) {
@@ -40,7 +40,7 @@
                     }
 
                 }
-                Cookie pathCookie = new Cookie("prePath", "Home");
+                Cookie pathCookie = new Cookie("prePath", "BookPage");
                 response.addCookie(pathCookie);
 
             %>
@@ -74,7 +74,7 @@
                             <span>Đơn hàng</span>
                         </button>
                     </form>
-                    <form class="myform" action="Cart" method="post">
+                    <form class="myform" action="CartServlet" method="post">
                         <button class="control-btn">
                             <i class="fa fa-shopping-cart fa-lg"></i>
                             <span>Giỏ hàng</span>
@@ -226,11 +226,11 @@
                             <td align="center">${itemBook.book.dimensions}</td>
                             <td align="center">${itemBook.price} VNĐ</td>
                             <td align="center"><form action="AddToCart" method="post">
-                                    <input type="hidden" name="item" value="itemBook"/>
+                                    <input type="hidden" name="itemID" value="${itemBook.barcode}"/>
                                     <input type="hidden" name="quantity" value="1" />
                                     <input type="hidden" name="accountID" value="<%=accountID%>" />
                                     <input type="hidden" name="cartID" value="<%=cartID%>" />
-                                    <button type="submit" style="color:black; background-color:orange;border:1px solid orange">Thêm vào giỏ hàng</button>
+                                    <button class="add-to-cart" type="submit" style="">Thêm vào giỏ hàng</button>
                                 </form></td>
                         </tr>
                     </c:forEach>
@@ -261,7 +261,7 @@
                 <div class="center box">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.3024241108965!2d105.78573631532709!3d20.980510994798752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1637076035857!5m2!1svi!2s" 
-                        width="600" 
+                        width="500" 
                         height="300" 
                         style="border:0;" 
                         allowfullscreen="" 

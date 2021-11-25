@@ -268,8 +268,7 @@ main {
 footer {
     font-size: 14px;
     bottom: 0px;
-    width: 100%;
-    background: white;
+    width: 100%;   
     font-family: "Montserrat", sans-serif;
 }
 
@@ -277,12 +276,14 @@ footer {
     display: flex;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 0 50px;
-    background-color: #ECECEC;
+    background-color: #f09c42;
+    color: #fff;
 }
 
 .main-content .box {
     flex-basis: 50%;
     padding: 10px 20px;
+    width: 50px;
 }
 
 .box h2 {
@@ -477,12 +478,37 @@ footer {
     padding: 20px 0px;
 }
 .display-book{
-    width: 70%;
+    width: 82%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     float: left;
     padding-left: 20px;
 }
+
+.display-book .add-to-cart {
+    color:black; 
+    background-color:#FACE9C;
+    border:1px solid #FACE9C; 
+    width: 100px; 
+    margin: 0 20px;
+    font-size: 16px;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.display-book .add-to-cart:hover {
+    background-color: #C8E2B1;
+    border:1px solid #C8E2B1; 
+}
+
+.display-book tr th {
+    font-size: 20px;
+}
+
+.display-book tr td {
+    font-size: 18px;
+}
+
 .one-book{
     width: 30%;
     float: left;
@@ -548,3 +574,4 @@ footer {
     text-decoration: none;
     display: block;
 }*/
+

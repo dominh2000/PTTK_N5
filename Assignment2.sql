@@ -229,13 +229,13 @@ DROP TABLE IF EXISTS `cart`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cart` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `OrderID` int NOT NULL,
+  `OrderID` int DEFAULT NULL,
   `Amount` int NOT NULL,
   `TotalPrice` float NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `FKCart92266` (`OrderID`),
   CONSTRAINT `FKCart92266` FOREIGN KEY (`OrderID`) REFERENCES `order` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,6 +244,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (10,NULL,9,9925000),(11,NULL,8,6619000);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -693,7 +694,7 @@ CREATE TABLE `itembook` (
 
 LOCK TABLES `itembook` WRITE;
 /*!40000 ALTER TABLE `itembook` DISABLE KEYS */;
-INSERT INTO `itembook` VALUES ('1',1,NULL,NULL,'978-604-0-00835-0',40000,'0',NULL,'Sách tiếng Anh 7 tập 1 cho học sinh','img/TiengAnh7_SHS_1.jpg'),('2',1,NULL,NULL,'978-604-0-25873-1',48000,'0',NULL,'Sách tiếng Anh 6 (Global Success) tập 1 cho học sinh','img/TiengAnh6_SHS_1.jpg'),('3',1,NULL,NULL,'978-0-099-54124-0',232000,'0',NULL,'Bác sĩ Zhivago (Vintage UK) - Bản dịch của Richard Pevear và Larissa Volokhonsky ','img/DoctorZhivago.jpg'),('4',1,NULL,NULL,'978-604-1-07222-0',95000,'0',NULL,'Chuỗi án mạng A.B.C - Bản dịch của Võ Thi Hương Lan','img/ABCMurders.jpg'),('5',1,NULL,NULL,'978-604-1-07777-5',107000,'0',NULL,'Những chiếc đồng hồ kỳ lạ - Bản dịch của Trần Hữu Kham','img/StrangeClocks.jpg'),('6',1,NULL,NULL,'978-0-12-811905-1',1769000,'0',NULL,'Computer Architecture - A Quantitative Approach (ấn bản lần thứ 6)','img/ComputerArchitecture_Quantitative_6.jpg'),('7',1,NULL,NULL,'978-0-13-467095-9',4096000,'0',NULL,'Operating Systems: Internals and Design Principles (ấn bản lần thứ 9)','img/OS_Internals_9.jpg');
+INSERT INTO `itembook` VALUES ('1',1,NULL,11,'978-604-0-00835-0',40000,'0',NULL,'Sách tiếng Anh 7 tập 1 cho học sinh','img/TiengAnh7_SHS_1.jpg'),('2',1,NULL,11,'978-604-0-25873-1',48000,'0',NULL,'Sách tiếng Anh 6 (Global Success) tập 1 cho học sinh','img/TiengAnh6_SHS_1.jpg'),('3',1,NULL,11,'978-0-099-54124-0',232000,'0',NULL,'Bác sĩ Zhivago (Vintage UK) - Bản dịch của Richard Pevear và Larissa Volokhonsky ','img/DoctorZhivago.jpg'),('4',1,NULL,11,'978-604-1-07222-0',95000,'0',NULL,'Chuỗi án mạng A.B.C - Bản dịch của Võ Thi Hương Lan','img/ABCMurders.jpg'),('5',1,NULL,11,'978-604-1-07777-5',107000,'0',NULL,'Những chiếc đồng hồ kỳ lạ - Bản dịch của Trần Hữu Kham','img/StrangeClocks.jpg'),('6',1,NULL,11,'978-0-12-811905-1',1769000,'0',NULL,'Computer Architecture - A Quantitative Approach (ấn bản lần thứ 6)','img/ComputerArchitecture_Quantitative_6.jpg'),('7',1,NULL,11,'978-0-13-467095-9',4096000,'0',NULL,'Operating Systems: Internals and Design Principles (ấn bản lần thứ 9)','img/OS_Internals_9.jpg');
 /*!40000 ALTER TABLE `itembook` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -925,8 +926,8 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `EmployeeID` int NOT NULL,
-  `CustomerCodeCust` int NOT NULL,
+  `EmployeeID` int DEFAULT NULL,
+  `CustomerCodeCust` int DEFAULT NULL,
   `TotalPrice` float NOT NULL,
   `Tax` float NOT NULL,
   `Status` varchar(255) DEFAULT NULL,
@@ -935,7 +936,7 @@ CREATE TABLE `order` (
   KEY `FKOrder900126` (`EmployeeID`),
   CONSTRAINT `FKOrder507689` FOREIGN KEY (`CustomerCodeCust`) REFERENCES `customer` (`CodeCust`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FKOrder900126` FOREIGN KEY (`EmployeeID`) REFERENCES `employee` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -944,6 +945,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,NULL,NULL,0,0,'Chưa xử lý');
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1247,4 +1249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-24  1:11:10
+-- Dump completed on 2021-11-24 22:43:05
